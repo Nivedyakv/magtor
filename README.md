@@ -36,3 +36,11 @@ REA analyzed the published torlnk 1.11.0 npm artifact using `rea analyze-javascr
 Providers may be offline, blocked or return no results; availability varies by runtime and region. EZTV title lookup is limited by its recent index. SubsPlease and FitGirl do not report swarm counts. Unknown seed counts are displayed as unknown and retained by the seeder filter. Search queries go through the site's server to external providers. Saved links live in localStorage on the current browser. No torrent payloads are downloaded, stored or seeded by this site.
 
 Automated checks cover routes, frontend syntax, magnet parsing, hash normalization, source mapping, and provider failure handling. Browser visual/interaction QA was unavailable because the managed browser tool was absent.
+
+## Design and Codex skill
+
+The interface follows the project-scoped `apple-design` Codex skill installed at `.agents/skills/apple-design/SKILL.md`, sourced from [Emil Kowalski’s skills repository](https://github.com/emilkowalski/skills/blob/main/skills/apple-design/SKILL.md). Its original MIT license is preserved beside the skill. Codex discovers it when working in this repository.
+
+The UI uses system typography, restrained blue accents, translucent chrome, light/dark system themes, and interruptible critically damped dialog motion. Keyboard category navigation, native modal focus handling, reduced-motion, reduced-transparency and higher-contrast preferences are supported. No frontend runtime dependency was added.
+
+The motion checks exercise dismissal, interruption/reopening, and reduced-motion behavior. Visual browser QA remains unverified because the managed browser tool was unavailable.
