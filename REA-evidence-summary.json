@@ -1,0 +1,44 @@
+{
+  "evidence_id": "ev_cfc23223d6ef1c83b773d288f491f3533162119bd8dfb4d7579e1de5f8c96c72",
+  "subject": {
+    "name": "package",
+    "digest": {
+      "sha256": "9e539dc2185f99bc54b07dc15499916400ca945385f6506fa13007389f423a0c"
+    },
+    "local_path": "/workspace/work/torlnk-package/package",
+    "format": "directory",
+    "architecture": null
+  },
+  "provider": {
+    "id": "rea-javascript-application",
+    "name": "REA JavaScript application analyzer",
+    "version": "1"
+  },
+  "predicate_type": "rea.javascript-application-analysis",
+  "parameters": {
+    "input_path": "/workspace/work/torlnk-package/package",
+    "format": "auto",
+    "integrity_policy": "fail"
+  },
+  "statistics": {
+    "relevant_files": 5,
+    "nested_asar_containers": 0,
+    "text_bytes_read": 139339,
+    "invalid_utf8_files": 0,
+    "parsed_javascript_files": 4,
+    "skipped_javascript_files": 0,
+    "visited_ast_nodes": 40255,
+    "findings": 465,
+    "modules": 0,
+    "parse_failures": 0
+  },
+  "limitations": [
+    "CommonJS and ESM binding relationships were recovered from inert syntax and resolved only within the inventoried artifact container.",
+    "Graph coverage is incomplete; unavailable facts remain explicit and must not be read as absence.",
+    "JavaScript and HTML were parsed as inert text; bundle bootstrap code was never executed.",
+    "Static imports, entrypoints, workers, endpoints, and storage relationships do not prove runtime execution.",
+    "Static paths and relationships may remain unresolved when expressions are dynamic or obfuscated.",
+    "Webpack/Rspack factories were recovered from AST literals; REA did not invoke push handlers or bundle bootstrap code."
+  ],
+  "root_artifact_sha256": "9e539dc2185f99bc54b07dc15499916400ca945385f6506fa13007389f423a0c"
+}
