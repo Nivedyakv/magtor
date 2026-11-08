@@ -1,11 +1,19 @@
 # Torlink Web
 
-Web adaptation of [baairon/torlink](https://github.com/baairon/torlink), based on its MIT-licensed v1.11.0 search adapters. A Cloudflare Worker serves the interface and same-origin search endpoints. Torrent transfer stays in the visitor's installed client.
+Web adaptation of [baairon/torlink](https://github.com/baairon/torlink), based on its MIT-licensed v1.11.0 search adapters. Vercel serves the static interface and a Node.js serverless function handles same-origin search endpoints. A Cloudflare Worker build is also retained. Torrent transfer stays in the visitor's installed client.
 
 ## Build and check
 
-Use Node 24.22.1 or later, then `npm ci`, `npm run build`, and `npm test`.
-The deployable Worker is `dist/server/index.js`; the manifest is `.openai/hosting.json`.
+Use Node.js 22.x, then `npm ci`, `npm run build`, and `npm test`.
+The build creates `.vercel/output` using Vercel Build Output API v3. The existing Sites Worker is also generated at `dist/server/index.js`.
+
+## Deploy to Vercel
+
+Import this repository into Vercel with the repository root as the Root Directory. Use the **Other** framework preset, **Node.js 22.x**, and the build command `npm run build` (configured in `vercel.json`). Leave the Output Directory override disabled: Vercel consumes `.vercel/output` automatically. No environment variables or database setup are required.
+
+The homepage is served statically. `/api/search` and `/api/sources` route to a bundled Node.js function with a 30-second maximum duration, allowing the existing 18-second provider timeout to finish. Search requests remain same-origin, so no CORS configuration is needed. The five-minute provider cache is best-effort and local to each warm function instance.
+
+After deployment, search for `Big Buck Bunny` with The Pirate Bay Movies enabled, and verify that a result opens a magnet dialog. `/api/sources` should return the provider list. Provider restrictions can differ between your Vercel region and the development environment.
 
 ## Features
 
